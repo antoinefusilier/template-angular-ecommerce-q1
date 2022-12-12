@@ -1,0 +1,26 @@
+<!-- .megamenu -->
+<div class="megamenu">
+    <div class="megamenu__body" [style.background-image]="menu.image ? 'url('+menu.image+')' : ''">
+        <div class="row">
+            <div *ngFor="let column of menu.columns" class="col-{{ column.size }}">
+                <ul class="megamenu__links megamenu__links--level--0">
+                    <li *ngFor="let item of column.items" class="megamenu__item" [ngClass]="{'megamenu__item--with-submenu': item.items}">
+
+                        <a *ngIf="!item.external" [routerLink]="item.url" [target]="item.target || '_self'" (click)="itemClick.emit(item)">{{ item.label }}</a>
+                        <a *ngIf="item.external" [href]="item.url" [target]="item.target" (click)="itemClick.emit(item)">{{ item.label }}</a>
+
+                        <ul *ngIf="item.items" class="megamenu__links megamenu__links--level--1">
+                            <li *ngFor="let subItem of item.items" class="megamenu__item">
+
+                                <a *ngIf="!subItem.external" [routerLink]="subItem.url" [target]="subItem.target || '_self'" (click)="itemClick.emit(subItem)">{{ subItem.label }}</a>
+                                <a *ngIf="subItem.external" [href]="subItem.url" [target]="subItem.target" (click)="itemClick.emit(subItem)">{{ subItem.label }}</a>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- .megamenu / end -->

@@ -1,0 +1,19 @@
+<div class="block-header">
+    <h3 class="block-header__title">{{ header }}</h3>
+    <div class="block-header__divider"></div>
+
+    <ul *ngIf="groups?.length" class="block-header__groups-list">
+        <li *ngFor="let group of groups">
+            <button type="button" class="block-header__group" [ngClass]="{'block-header__group--active': group.current}" (click)="setGroup(group)">{{ group.name }}</button>
+        </li>
+    </ul>
+
+    <div *ngIf="arrows" class="block-header__arrows-list">
+        <button class="block-header__arrow block-header__arrow--left" type="button" (click)="prev.emit()">
+            <app-icon name="arrow-rounded-left-7x11" size="7x11"></app-icon>
+        </button>
+        <button class="block-header__arrow block-header__arrow--right" type="button" (click)="next.emit()">
+            <app-icon name="arrow-rounded-right-7x11" size="7x11"></app-icon>
+        </button>
+    </div>
+</div>

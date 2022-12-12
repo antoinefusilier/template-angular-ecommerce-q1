@@ -1,0 +1,31 @@
+<div class="post-card" [ngClass]="{
+    'post-card--layout--grid': ['grid-nl', 'grid-lg'].includes(layout || ''),
+    'post-card--layout--list': ['list-nl', 'list-sm'].includes(layout || ''),
+
+    'post-card--size--nl': ['grid-nl', 'list-nl'].includes(layout || ''),
+    'post-card--size--lg': layout === 'grid-lg',
+    'post-card--size--sm': layout === 'list-sm'
+}">
+    <div class="post-card__image">
+        <a appClick [routerLink]="root.post()">
+            <img [src]="post.image" alt="">
+        </a>
+    </div>
+    <div class="post-card__info">
+        <div class="post-card__category">
+            <a appClick [routerLink]="root.post()" *ngFor="let category of post.categories">{{ category }}</a>
+        </div>
+        <div class="post-card__name">
+            <a appClick [routerLink]="root.post()">{{ post.title }}</a>
+        </div>
+        <div class="post-card__date">{{ post.date }}</div>
+        <div class="post-card__content">
+            In one general sense, philosophy is associated with wisdom,
+            intellectual culture and a search for knowledge.
+            In that sense, all cultures...
+        </div>
+        <div class="post-card__read-more">
+            <a appClick [routerLink]="root.post()" class="btn btn-secondary btn-sm">Read More</a>
+        </div>
+    </div>
+</div>

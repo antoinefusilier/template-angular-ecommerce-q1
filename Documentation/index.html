@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Stroyka</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="vendor/highlight.js-9.15.6/styles/github-gist.css">
+
+    <!-- js -->
+    <script src="vendor/highlight.js-9.15.6/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div class="docs-markup">
+    <nav class="docs-nav">
+
+        <div class="docs-nav__logo">
+            <a href="" target="_blank">
+                <svg class="docs-logo" xmlns="http://www.w3.org/2000/svg" width="120px" height="20px">
+                    <path d="M118.5,20h-1.1c-0.6,0-1.2-0.4-1.4-1l-1.5-4h-6.1l-1.5,4c-0.2,0.6-0.8,1-1.4,1h-1.1c-1,0-1.8-1-1.4-2l1.1-3
+                             l1.5-4l3.6-10c0.2-0.6,0.8-1,1.4-1h1.6c0.6,0,1.2,0.4,1.4,1l3.6,10l1.5,4l1.1,3C120.3,19,119.5,20,118.5,20z M111.5,6.6l-1.6,4.4
+                             h3.2L111.5,6.6z M99.5,20h-1.4c-0.4,0-0.7-0.2-0.9-0.5L94,14l-2,3.5v1c0,0.8-0.7,1.5-1.5,1.5h-1c-0.8,0-1.5-0.7-1.5-1.5v-17
+                             C88,0.7,88.7,0,89.5,0h1C91.3,0,92,0.7,92,1.5v8L94,6l3.2-5.5C97.4,0.2,97.7,0,98.1,0h1.4c1.2,0,1.9,1.3,1.3,2.3L96.3,10l4.5,7.8
+                             C101.4,18.8,100.7,20,99.5,20z M80.3,11.8L80,12.3v6.2c0,0.8-0.7,1.5-1.5,1.5h-1c-0.8,0-1.5-0.7-1.5-1.5v-6.2l-0.3-0.5l-5.5-9.5
+                             c-0.6-1,0.2-2.3,1.3-2.3h1.4c0.4,0,0.7,0.2,0.9,0.5L76,4.3l2,3.5l2-3.5l2.2-3.8C82.4,0.2,82.7,0,83.1,0h1.4c1.2,0,1.9,1.3,1.3,2.3
+                             L80.3,11.8z M60,20c-5.5,0-10-4.5-10-10S54.5,0,60,0s10,4.5,10,10S65.5,20,60,20z M60,4c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6
+                             S63.3,4,60,4z M47.8,17.8c0.6,1-0.2,2.3-1.3,2.3h-2L41,14h-4v4.5c0,0.8-0.7,1.5-1.5,1.5h-1c-0.8,0-1.5-0.7-1.5-1.5v-17
+                             C33,0.7,33.7,0,34.5,0H41c0.3,0,0.7,0,1,0.1c3.4,0.5,6,3.4,6,6.9c0,2.4-1.2,4.5-3.1,5.8L47.8,17.8z M42,4.2C41.7,4.1,41.3,4,41,4h-3
+                             c-0.6,0-1,0.4-1,1v4c0,0.6,0.4,1,1,1h3c0.3,0,0.7-0.1,1-0.2c0.3-0.1,0.6-0.3,0.9-0.5C43.6,8.8,44,7.9,44,7C44,5.7,43.2,4.6,42,4.2z
+                              M29.5,4H25v14.5c0,0.8-0.7,1.5-1.5,1.5h-1c-0.8,0-1.5-0.7-1.5-1.5V4h-4.5C15.7,4,15,3.3,15,2.5v-1C15,0.7,15.7,0,16.5,0h13
+                             C30.3,0,31,0.7,31,1.5v1C31,3.3,30.3,4,29.5,4z M6.5,20c-2.8,0-5.5-1.7-6.4-4c-0.4-1,0.3-2,1.3-2h1c0.5,0,0.9,0.3,1.2,0.7
+                             c0.2,0.3,0.4,0.6,0.8,0.8C4.9,15.8,5.8,16,6.5,16c1.5,0,2.8-0.9,2.8-2c0-0.7-0.5-1.3-1.2-1.6C7.4,12,7,11,7.4,10.3l0.4-0.9
+                             c0.4-0.7,1.2-1,1.8-0.6c0.6,0.3,1.2,0.7,1.6,1.2c1,1.1,1.7,2.5,1.7,4C13,17.3,10.1,20,6.5,20z M11.6,6h-1c-0.5,0-0.9-0.3-1.2-0.7
+                             C9.2,4.9,8.9,4.7,8.6,4.5C8.1,4.2,7.2,4,6.5,4C5,4,3.7,4.9,3.7,6c0,0.7,0.5,1.3,1.2,1.6C5.6,8,6,9,5.6,9.7l-0.4,0.9
+                             c-0.4,0.7-1.2,1-1.8,0.6c-0.6-0.3-1.2-0.7-1.6-1.2C0.6,8.9,0,7.5,0,6c0-3.3,2.9-6,6.5-6c2.8,0,5.5,1.7,6.4,4C13.3,4.9,12.6,6,11.6,6
+                             z"></path>
+                </svg>
+            </a>
+        </div>
+
+        <ul class="docs-nav__links">
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-home">
+                        Introduction
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-features">
+                        Features
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-getting-started">
+                        Getting Started
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-project-structure">
+                        Project Structure
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-third-party-modules">
+                        Third-Party Modules
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-scss-files">
+                        SCSS Files
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-ltr-rtl">
+                        LTR/RTL
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-currency">
+                        Currency
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-svg">
+                        SVG
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-fonts">
+                        Fonts
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-update">
+                        Update
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-integration">
+                        Integration
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-changelog">
+                        Changelog
+                    </a>
+                </li>
+            
+                <li>
+                    <a class="docs-nav__link" href="#section-credits">
+                        Credits
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <div class="docs-content">
+        
+            <section class="docs-section" id="section-home">
+                <h1 class="docs-section__title">Stroyka</h1>
+
+                <div class="docs-typography">
+<p>Thank you for purchasing my theme. If you have any questions that are beyond the scope of this help file, please feel free to email via my
+user page contact form <a href="https://themeforest.net/user/kos9">here</a>. Thanks so much!</p>
+
+
+</div>
+            </section>
+        
+            <section class="docs-section" id="section-features">
+                <h1 class="docs-section__title">Features</h1>
+
+                <div class="docs-typography">
+    <ul>
+<li>100% Responsive Layout</li>
+<li>LTR/RTL supported</li>
+<li>HTML5 and CSS3</li>
+<li>Bootstrap 4</li>
+<li>SASS</li>
+<li>CSS3 Animation</li>
+<li>SVG Icons</li>
+<li>Font Awesome Icons</li>
+<li>BEM syntax</li>
+<li>Roboto Google Font</li>
+<li>Compatible with all major browsers</li>
+<li>Grid / List products view</li>
+<li>Quickview</li>
+<li>2 Variants of the home page</li>
+<li>3 Variants of the product page</li>
+<li>3 Variants of the blog page layout</li>
+<li>2 Variants of the post page layout</li>
+<li><strong>Off canvas</strong> filters</li>
+<li><strong>Sticky header</strong> that can work in two modes: pullToShow and alwaysOnTop</li>
+<li><strong>Photoswipe</strong> gallery</li>
+<li><strong>RedZoom</strong> gallery</li>
+<li>Drop down <strong>account menu</strong></li>
+<li><strong>Off canvas</strong> and <strong>Drop down</strong> shopping cart</li>
+<li><strong>Search suggestions</strong></li>
+</ul>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-getting-started">
+                <h1 class="docs-section__title">Getting Started</h1>
+
+                <div class="docs-typography">
+    <h2 id="preparation">Preparation</h2>
+<ol>
+<li>Make sure your system has installed <a href="https://nodejs.org">Node.js</a>.</li>
+<li>Open a terminal window and go to the <code>Sources</code> directory.</li>
+<li>Run the <code>npm install</code> command. This command will load all necessary dependencies specified in the <code>package.json</code> file.</li>
+<li>Then run the <code>npm install -g @angular/cli</code> command to install <strong>Angular CLI</strong> (if not yet installed).</li>
+</ol>
+<h2 id="build-project">Build Project</h2>
+<p>To start a local HTTP server and runs the build process with change tracking run the command:</p>
+<pre><code class="language-text">ng serve</code></pre>
+<p>To build for production, run the command:</p>
+<pre><code class="language-text">ng build --prod</code></pre>
+<p>After executing the command, the compiled project will be located in the <code>dist</code> directory.</p>
+<p>For a complete list of available <strong>Angular CLI</strong> commands, go to <a href="https://cli.angular.io/" target="_blank">this link</a>.</p>
+<h2 id="server-side-rendering">Server Side Rendering</h2>
+<p>To build server and client version of angular application, and start an ExpressJS server run the command:</p>
+<pre><code class="language-text">npm run dev:ssr</code></pre>
+<p>Other useful commands related to SSR:</p>
+<ul>
+<li><code>serve:ssr</code> - Starts an ExpressJS server;</li>
+<li><code>build:ssr</code> - Builds client and server version of the angular application and build ExpressJS server;</li>
+<li><code>start:ssr</code> - Builds production version of the server, application and starts ExpressJS server.</li>
+</ul>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-project-structure">
+                <h1 class="docs-section__title">Project Structure</h1>
+
+                <div class="docs-typography">
+
+    <p>Project source codes are in the <code>Sources</code> directory.
+After downloading and unpacking the package, the <code>Sources</code> directory will look like this:</p>
+<pre><code class="language-text">Sources/
+    e2e/
+    src/
+        app/
+        assets/
+        data/
+        environments/
+        fake-server/
+        scss/
+        svg/
+        favicon.ico
+        index.html
+        main.server.ts
+        main.ts
+        polyfills.ts
+        sprite-config.json
+        styles.scss
+        test.ts
+        tslint.json
+    .browserslistrc
+    .editorconfig
+    .gitignore
+    angular.json
+    karma.conf.js
+    package.json
+    package-lock.json
+    README.md
+    server.ts
+    tsconfig.app.json
+    tsconfig.base.json
+    tsconfig.json
+    tsconfig.server.json
+    tsconfig.spec.json
+    tslint.json</code></pre>
+<p>Here is a description of the most important files and directories of the project:</p>
+<ul>
+<li><code>Sources/src/app/</code> - Contains components, modules, directives, etc. More details below.</li>
+<li><code>Sources/src/assets/</code> - This directory contains static files such as images, fonts, svg sprite, etc.</li>
+<li><code>Sources/src/data/</code> - Contains stubs data for the template, products, categories, etc.</li>
+<li><code>Sources/src/fake-server/</code> - Contains functionality needed for demo purposes only. More details in the
+<a href="#section-integration">Integration</a> section.</li>
+<li><code>Sources/src/scss/</code> - Contains project styles. More details are described in the <strong>SCSS Files</strong> section.</li>
+<li><code>Sources/src/svg/</code> - Contains separate SVG files.</li>
+<li><code>Sources/src/sprite-config.json</code> - This files contains necessary information to build svg sprite. See the <strong>SVG</strong> section for details.</li>
+</ul>
+<h2 id="app-directory">App directory</h2>
+<p><code>Sources/src/app</code> is a main directory with the following structure:</p>
+<pre><code class="language-text">components/
+modules/
+    account/
+    blocks/
+    blog/
+    footer/
+    header/
+    mobile/
+    shop/
+    site/
+    widgets/
+pages/
+shared/
+app.component.html
+app.component.scss
+app.component.ts
+app.module.ts
+app-routing.module.ts</code></pre>
+<p><strong>Modules Description</strong></p>
+<ul>
+<li><p><strong>modules/account/account.module.ts</strong><br>
+Contains customer pages (currently only login page).</p>
+</li>
+<li><p><strong>modules/blocks/blocks.nodule.ts</strong><br>
+This module contains components used as a construction bricks for pages (mainly used on the home page).</p>
+</li>
+<li><p><strong>modules/blog/blog.nodule.ts</strong><br>
+Blog related components, pages, etc.</p>
+</li>
+<li><p><strong>modules/footer/footer.nodule.ts</strong><br>
+Contains the components used in the footer of the site.</p>
+</li>
+<li><p><strong>modules/header/header.nodule.ts</strong><br>
+Contains the components used in the header of the site.</p>
+</li>
+<li><p><strong>modules/mobile/mobile.nodule.ts</strong><br>
+Contains the components used in the mobile header and mobile menu.</p>
+</li>
+<li><p><strong>modules/shop/shop.nodule.ts</strong><br>
+Contains shop pages (category, product, cart, checkout, etc.) and components.</p>
+</li>
+<li><p><strong>modules/site/site.nodule.ts</strong><br>
+Contains rest site pages (About Us, Contact Us, etc.).</p>
+</li>
+<li><p><strong>modules/widgets/widgets.nodule.ts</strong><br>
+Contains components used in the shop or/and blog sidebar.</p>
+</li>
+<li><p><strong>shared/shared.module.ts</strong><br>
+Contains components, services, directives, interfaces used across all template.</p>
+</li>
+<li><p><strong>app.module.ts</strong><br>
+The main module contains home and &quot;not found&quot; pages.</p>
+</li>
+</ul>
+<p><strong>Simplified routing scheme</strong></p>
+<pre><code class="language-text">/ (homeComponent)
+    /shop (modules/shop/shop.module#ShopModule)
+        ... shop routes
+    /blog (modules/blog/blog.module#BlogModule)
+        ... blog routes
+    /account (modules/account/account.module#AccountModule)
+        ... account routes
+    /site (modules/site/site.module#SiteModule)
+        ... site routes</code></pre>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-third-party-modules">
+                <h1 class="docs-section__title">Third-Party Modules</h1>
+
+                <div class="docs-typography">
+    <p>This template uses four third-party modules:</p>
+<ul>
+<li><p><strong>@angular-slider/ngx-slider</strong> (<a href="https://github.com/angular-slider/ngx-slider" target="_blank">https://github.com/angular-slider/ngx-slider</a>)<br>
+Used in the price filter on the product category page.</p>
+</li>
+<li><p><strong>ngx-owl-carousel-o</strong> (<a href="https://github.com/vitalii-andriiovskyi/ngx-owl-carousel-o" target="_blank">https://github.com/vitalii-andriiovskyi/ngx-owl-carousel-o</a>)<br>
+Used to display interactive carousel on the home page and in the <strong>Related Products</strong> section on the product page.</p>
+</li>
+<li><p><strong>ngx-bootstrap</strong> (<a href="https://valor-software.com/ngx-bootstrap/" target="_blank">https://valor-software.com/ngx-bootstrap/</a>)<br>
+In fact, only its submodule <strong>ModalModule</strong> is used to show product &quot;quick view&quot;.</p>
+</li>
+<li><p><strong>ngx-toastr</strong> (<a href="https://scttcper.github.io/ngx-toastr/" target="_blank">https://scttcper.github.io/ngx-toastr/</a>)<br>
+Used to show notifications after adding products to the cart, wish list and comparison list.</p>
+</li>
+<li><p><strong>ngx-red-zoom</strong> (<a href="https://scompiler.github.io/red-zoom-angular/" target="_blank">https://scompiler.github.io/red-zoom-angular/</a>)<br>
+RedZoom is a modern very easy-to-use image zoom library which made as Angular directive and fully stylable via CSS/SCSS.</p>
+</li>
+</ul>
+<p>The following libraries and frameworks are also used:</p>
+<ul>
+<li><p><strong>bootstrap</strong> (<a href="https://getbootstrap.com/" target="_blank">https://getbootstrap.com/</a>)<br>
+Bootstrap is an open source toolkit for developing with HTML, CSS, and JS.</p>
+</li>
+<li><p><strong>photoswipe</strong> (<a href="https://photoswipe.com/" target="_blank">https://photoswipe.com/</a>)<br>
+JavaScript gallery, no dependencies. Used on the product page.</p>
+</li>
+</ul>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-scss-files">
+                <h1 class="docs-section__title">SCSS Files</h1>
+
+                <div class="docs-typography">
+    <p>The directory with SCSS files contains the following files and subdirectories:</p>
+<pre><code class="language-text">scss/
+   blocks/
+   blog/
+   common/
+   components/
+   filters/
+   footer/
+   header/
+   mixins/
+   pages/
+   shop/
+   themes/
+   widgets/
+   _custom.scss
+   _custom-variables.scss
+   _functions.scss
+   _style.scss
+   _variables.scss</code></pre>
+<p>You can make changes to any of these files.</p>
+<p>To make it easier for you in the future to upgrade the template to the new version,
+we recommend (if possible) making changes only to <code>_custom-variables.scss</code> and <code>_custom.scss</code> files.</p>
+<ul>
+<li><code>_custom-variables.scss</code> - It is used to override the values of variables.</li>
+<li><code>_custom.scss</code> - Use to write your own scss code.</li>
+</ul>
+<h2 id="predefined-color-schemes">Predefined color schemes</h2>
+<p>To compile a template with one of the predefined color schemes,
+open the <code>_custom-variables.scss</code> file, then find and uncomment one of the following lines:</p>
+<pre><code class="language-text">//@import &#39;themes/theme-red/theme-variables&#39;;
+//@import &#39;themes/theme-blue/theme-variables&#39;;
+//@import &#39;themes/theme-black/theme-variables&#39;;
+//@import &#39;themes/theme-green/theme-variables&#39;;</code></pre>
+<p>After that, you need to rebuild the template.</p>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-ltr-rtl">
+                <h1 class="docs-section__title">LTR/RTL</h1>
+
+                <div class="docs-typography">
+<p>The template supports two ways to use directions.</p>
+<ol>
+<li><p>If you need only one direction, LTR or RTL:</p>
+<p>Open <code>src/scss/_custom-variables.scss</code>, and define next variables:</p>
+<pre><code class="language-scss">$direction:       ltr;   // specify the direction you need (ltr or rtl)
+$both-directions: false; // set to false to disable style compilation
+                         // for two directions</code></pre>
+<p>Then open <code>src/index.html</code> and specify value of the <code>dir</code> attribute (ltr or rtl) for <code>&lt;html&gt;</code> tag:</p>
+<pre><code class="language-html">...
+&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+...</code></pre>
+</li>
+<li><p>If you need two directions simultaneously (your application will be available in at least two languages, one LTR and one RTL):</p>
+<p>Open <code>src/app/app.component.ts</code> and define your logic to determine the direction in the
+component constructor&#39;s function <code>AppComponent</code>.
+Then use the <code>DirectionService</code> service to set direction:</p>
+<pre><code class="language-typescript">constructor(
+    ...
+    private direction: DirectionService
+) {
+    const detectedDirection = &#39;rtl&#39;;
+
+    this.direction.value = detectedDirection;
+}</code></pre>
+</li>
+</ol>
+<p><em>NOTE: Currently, on-the-fly (after loading and initialization) direction switching (ltr &lt;--&gt; rtl) is not supported.</em></p>
+<h3 id="how-does-ltr-rtl-support-work-">How does LTR/RTL support work?</h3>
+<p>The direction is controlled using two scss variables:</p>
+<ul>
+<li><code>$direction</code> - indicates direction. Possible values: <code>ltr</code> or <code>rtl</code>.</li>
+<li><code>$both-directions</code> - if <code>true</code> compiles styles for two directions, the <code>$direction</code> variable will be ignored.
+Possible values: <code>true</code> or <code>false</code>.</li>
+</ul>
+<p>Some &quot;magic&quot; variables are also used, which change their value depending on the given direction value.
+The names of these variables are the same as the names of the
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties" target="_blank">Logical Properties</a>
+(for example, variable <code>$margin-inline-start</code>).
+These variables should only be used in the <code>direction</code> mixin.</p>
+<p>This example demonstrates how it works:</p>
+<pre><code class="language-scss">.alert {
+    @include direction {
+        #{$margin-inline-start}: 20px;
+    }
+}</code></pre>
+<p>Will be compiled to:</p>
+<ul>
+<li><p>If <code>$direction == ltr</code> and <code>$both-directions == false</code>:</p>
+<pre><code class="language-css"> .alert {
+     margin-left: 20px;
+ }</code></pre>
+</li>
+<li><p>If <code>$direction == rtl</code> and <code>$both-directions == false</code>:</p>
+<pre><code class="language-css">.alert {
+    margin-right: 20px;
+}</code></pre>
+</li>
+<li><p>If <code>$both-directions == true</code>:</p>
+<pre><code class="language-css">[dir=ltr] .alert {
+    margin-left: 20px;
+}
+[dir=rtl] .alert {
+    margin-right: 20px;
+}</code></pre>
+</li>
+</ul>
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-currency">
+                <h1 class="docs-section__title">Currency</h1>
+
+                <div class="docs-typography">
+    <h2 id="how-to-change-currency-">How to change currency?</h2>
+<ol>
+<li>Open the <code>src/app/app.component.ts</code> file and find the following code:</li>
+</ol>
+<pre><code class="language-typescript">this.currency.options = {
+    code: &#39;USD&#39;,
+    // display: &#39;symbol&#39;,
+    // digitsInfo: &#39;1.2-2&#39;,
+    // locale: &#39;en-US&#39;
+};</code></pre>
+<ol start="2">
+<li>Replace <code>&#39;USD&#39;</code> with the currency code you need.</li>
+</ol>
+<h2 id="how-to-change-currency-format-">How to change currency format?</h2>
+<p>There is currently no easy way to set an arbitrary currency format (for example: dot instead of comma).
+But Angular allows you to change the format of the currency in accordance with the specified locale.
+I think in most cases this is what you need.</p>
+<p>Here is an example for the <code>it</code> (it_IT, Italy) locale:</p>
+<pre><code class="language-text">$1,019.00 -&gt; 1.019,00 €</code></pre>
+<ol>
+<li>Open the <code>src/app/app.module.ts</code> file;</li>
+<li>Uncomment some parts of the code, as in the example below:</li>
+</ol>
+<pre><code class="language-typescript">import { LOCALE_ID, NgModule } from &#39;@angular/core&#39;;
+import { registerLocaleData } from &#39;@angular/common&#39;;
+import localeIt from &#39;@angular/common/locales/it&#39;;
+
+registerLocaleData(localeIt, &#39;it&#39;);
+
+// ...
+
+@NgModule({
+    // ...
+    providers: [
+        { provide: LOCALE_ID, useValue: &#39;it&#39; }
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule { }</code></pre>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-svg">
+                <h1 class="docs-section__title">SVG</h1>
+
+                <div class="docs-typography">
+    <p><strong>How to add SVG icon?</strong></p>
+<p>Just put your file with SVG icon to the <code>Sources/src/svg</code> directory.</p>
+<p><strong>How to compile SVG sprite?</strong></p>
+<p>From the <code>Sources</code> directory, run the next command:</p>
+<pre><code class="language-text">npm run sprite</code></pre>
+<p>After executing the command, you can find the SVG sprite on this path <code>Sources/src/assets/images/sprite.svg</code>.</p>
+<p><strong>How to use icons in the template?</strong></p>
+<p>To display the icon, you can use the <code>app-icon</code> component.
+For example, we have an SVG icon named <code>my-icon.svg</code>, whose width and height equals to 20px:</p>
+<pre><code class="language-html">&lt;app-icon name=&quot;my-icon&quot; size=&quot;20x20&quot;&gt;&lt;/app-icon&gt;</code></pre>
+<p>If the width and height are equal, then we can simplify the size property as follows:</p>
+<pre><code class="language-html">&lt;app-icon name=&quot;my-icon&quot; size=&quot;20&quot;&gt;&lt;/app-icon&gt;</code></pre>
+<p><strong>What is the sprite-config.json file for?</strong></p>
+<p><code>sprite-config.json</code> file contains configuration for <strong>svg-sprite</strong> module. It used to build svg sprite.
+You can get more info <a href="https://github.com/jkphl/svg-sprite" target="_blank">here</a>.</p>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-fonts">
+                <h1 class="docs-section__title">Fonts</h1>
+
+                <div class="docs-typography">
+    <p>We used three fonts in this template:</p>
+<ul>
+<li><p><strong>Roboto</strong> (Google Web Font: <a href="https://fonts.google.com/specimen/Roboto">https://fonts.google.com/specimen/Roboto</a>)
+The main font used in the template.</p>
+</li>
+<li><p><strong>FontAwesome</strong> (<a href="https://fontawesome.com/">https://fontawesome.com/</a>)
+Icon Font to display some icons in the template.</p>
+</li>
+<li><p><strong>stroyka</strong> (src/assets/fonts/stroyka)
+Custom Icon Font to display some icons in the template. It is used only in Edge to solve performance issue associated with
+rendering a huge amount of SVG icons.</p>
+</li>
+</ul>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-update">
+                <h1 class="docs-section__title">Update</h1>
+
+                <div class="docs-typography">
+    <p>To simplify the process of updating the template,
+I recommend using the tools for visual comparison and merging, such as:</p>
+<ul>
+<li>Meld, <a href="http://meldmerge.org/">http://meldmerge.org/</a> (Free)</li>
+<li>WinMerge, <a href="http://winmerge.org/">http://winmerge.org/</a> (Free)</li>
+<li>Beyond Compare (my choice), <a href="http://www.scootersoftware.com/">http://www.scootersoftware.com/</a> (Paid)</li>
+</ul>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-integration">
+                <h1 class="docs-section__title">Integration</h1>
+
+                <div class="docs-typography">
+    <p>First of all, you should understand that the process of integrating a template with your server is likely to be quite time-consuming
+and complicated. This is due to the fact that in the world of online stores there are no uniform standards.
+Some use integers as identifiers, others use UUID strings, and the third use something else.
+Nevertheless, I took some steps to simplify this process as much as possible. This will be discussed in this section.</p>
+<h2 id="api-services">API services</h2>
+<p>The template has several services that are designed to interact with the server by sending AJAX requests.
+All of them are in the <code>src/app/shared/api</code> directory. All you need is to replace requests to a fake
+server with requests to your (real) server. You can find out more about the fake server below.
+Also below, several solutions are proposed if the composition of the fields of your data differs from the interfaces used in the template.</p>
+<pre><code class="language-typescript">export class ProductsService {
+    constructor(private http: HttpClient) { }
+
+    getProduct(productSlug: string): Observable&lt;Product&gt; {
+        const url = `https://example.com/api/products/${productSlug}.json`;
+
+        return this.http.get&lt;Product&gt;(url);
+    }
+}</code></pre>
+<p>Related links:</p>
+<ul>
+<li><a href="https://angular.io/guide/http">https://angular.io/guide/http</a></li>
+</ul>
+<h2 id="root-service">Root service</h2>
+<p>The root service is designed to generate the URLs used in the template (<code>src/app/shared/services/root.service.ts</code>).
+You can use it to quickly change the URLs of products, categories, etc.
+For example, this is how you can get the product URL containing its identifier:</p>
+<pre><code class="language-typescript">export class RootService {
+    product(product: Partial&lt;Product&gt;): string {
+        return `/products/${product.id}`;
+    }
+}</code></pre>
+<p>Remember to make the appropriate changes to the routes and components.</p>
+<h2 id="what-if-my-product-fields-are-different-from-those-used-in-the-template-">What if my product fields are different from those used in the template?</h2>
+<p>Well, I can offer several solutions to this problem (they are sorted by complexity, from simple to complex):</p>
+<ul>
+<li>Property mapping;</li>
+<li>Custom fields;</li>
+<li>Modify product interface.</li>
+</ul>
+<h3 id="property-mapping">Property mapping</h3>
+<p>This method involves converting data when it is received from the server:</p>
+<pre><code class="language-typescript">export class ProductsService {
+    getProduct(productSlug): Observable&lt;Product&gt; {
+        const url = `https://example.com/api/products/${productSlug}.json`;
+
+        return this.http.get&lt;Product&gt;(url).pipe(
+            map(product =&gt; {
+                return {
+                    id: product.productId,
+                    name: product.description,
+                    images: product.pictures,
+                    ...
+                };
+            })
+        );
+    }
+}</code></pre>
+<h3 id="custom-fields">Custom fields</h3>
+<p>If there is no suitable property in the product interface, you can use custom fields:</p>
+<pre><code class="language-typescript">export class ProductsService {
+    getProduct(productSlug): Observable&lt;Product&gt; {
+        const url = `https://example.com/api/products/${productSlug}.json`;
+
+        return this.http.get&lt;Product&gt;(url).pipe(
+            map(product =&gt; {
+                return {
+                    ...
+                    customFields: {
+                        isbn: product.ISBN,
+                    },
+                };
+            })
+        );
+    }
+}</code></pre>
+<h3 id="modify-product-interface">Modify product interface</h3>
+<p>And finally, the last and most labor-intensive way. Change the product interface and everything related to it throughout the template.</p>
+<h2 id="what-is-a-fake-server-and-why-is-it-needed-">What is a fake server and why is it needed?</h2>
+<p>I think this will surprise many, but, as practice shows, this issue also needs to be clarified.</p>
+<p>Typically, an Angular application generates HTML pages based on dynamic data received from the server.
+While the Angular template comes without server-side code. However, to demonstrate the capabilities of the template, we still need
+something that will process requests and serve as a data provider for the template, and it is for these purposes that I created a fake
+server that imitates the operation of a real server. You should not use it (and everything related to it) in a real application,
+it is only needed to demonstrate the capabilities of the template.</p>
+<p>All code associated with a fake server is located in the <code>src/fake-server</code> directory. You can remove it.</p>
+<h2 id="data-flow-on-the-example-of-a-product-page">Data flow on the example of a product page</h2>
+<p>It is assumed that if you bought this template, then you have sufficient knowledge to use it. But sometimes people buy it for the
+purpose of training or something else... I don’t know. This section exists for them and it describes how the data received from the server
+falls into the template.</p>
+<p>So this is what happens when you open the <code>http://localhost:4200/shop/products/ash-s-chainsaw-3.5kw</code> page:</p>
+<ol>
+<li><p>First, Angular looks for a suitable route. In this case, it will be the route from the
+<code>src/app/modules/shop/shop-routing.module.ts</code> file:</p>
+<pre><code class="language-javascript">...
+{
+    path: &#39;products/:productSlug&#39;,
+    component: PageProductComponent,
+    data: {
+        layout: &#39;standard&#39;,
+        sidebarPosition: &#39;start&#39;
+    },
+    resolve: {
+        product: ProductResolverService
+    },
+}
+...</code></pre>
+<p>You can learn more about the routes, their processing order, etc. from the official <a href="https://angular.io/guide/router">documentation</a>.</p>
+</li>
+<li><p>As you can see this route uses a pre-fetching component data:</p>
+<pre><code class="language-javascript">...
+resolve: {
+    product: ProductResolverService
+}
+...</code></pre>
+<p>I see no reason to copy the official <a href="https://angular.io/guide/router#resolve-pre-fetching-component-data">documentation</a>
+(Milestone 5: Route guards -&gt; Resolve: pre-fetching component data). I will only say that you need to pay attention to these files:</p>
+<ul>
+<li><code>src/app/modules/shop/resolvers/product-resolver.service.ts</code><br>
+A service that implements the <code>Resolve</code> interface;</li>
+<li><code>src/app/shared/api/shop.service.ts</code><br>
+A service that communicates with the server.</li>
+</ul>
+</li>
+<li><p>After all data is received and navigation is completed, Angular activates the <code>PageProductComponent</code> component.
+Now we can access the product data from the <code>product</code> property of the <code>data</code> object:</p>
+<pre><code class="language-typescript">export class PageProductComponent implements OnInit {
+    product: Product;
+
+    constructor(
+        private route: ActivatedRoute,
+    ) { }
+
+    ngOnInit(): void {
+        this.route.data.subscribe(data =&gt; {
+            this.product = data.product;
+        });
+    }
+}</code></pre>
+<ul>
+<li><code>src/app/modules/shop/pages/page-product/page-product.component.ts</code></li>
+</ul>
+</li>
+<li><p>Now we can access the product data from the template:</p>
+<pre><code class="language-html">&lt;app-product [product]=&quot;product&quot;&gt;&lt;/app-product&gt;</code></pre>
+<p>Pay attention to these files:</p>
+<ul>
+<li><code>src/app/modules/shop/pages/page-product/page-product.component.html</code></li>
+<li><code>src/app/shared/components/product/product.component.html</code></li>
+</ul>
+</li>
+</ol>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-changelog">
+                <h1 class="docs-section__title">Changelog</h1>
+
+                <div class="docs-typography">
+    <p><strong>Version 1.18.0</strong> – January 17, 2022</p>
+<ul>
+<li>Fixed (regression): Unexpected execution of mouse click handlers while dragging the owl-carousel (now mouse click will be prevented);</li>
+<li>Other: node-sass replaced with dart-sass;</li>
+<li>Updated: <strong>Angular</strong> from <code>12.2.11</code> to <code>13.1.2</code> and other dependencies.</li>
+</ul>
+<p><strong>Version 1.17.0</strong> – October 28, 2021</p>
+<ul>
+<li>Fixed: Too slow page generation in SSR mode;</li>
+<li>Updated: <strong>Angular</strong> from <code>12.0.0</code> to <code>12.2.11</code> and other dependencies.</li>
+</ul>
+<p><strong>Version 1.16.2</strong> – June 21, 2021</p>
+<ul>
+<li>Fixed: Wrong ngx-red-zoom gallery position in the RTL version.</li>
+</ul>
+<p><strong>Version 1.16.1</strong> – May 22, 2021</p>
+<ul>
+<li>Fixed: Account menu does not close when clicking on a menu item.</li>
+</ul>
+<p><strong>Version 1.16.0</strong> – May 20, 2021</p>
+<ul>
+<li>Updated: <strong>Bootstrap</strong> from <code>4.5.3</code> to <code>4.6.0</code>;</li>
+<li>Updated: <strong>Angular</strong> from <code>11.0.1</code> to <code>12.0.0</code> and other dependencies.</li>
+</ul>
+<p><strong>Version 1.15.2</strong> – May 12, 2021</p>
+<ul>
+<li>Fixed: Incorrect links in mobile header;</li>
+<li>Fixed: ngx-slide under some conditions dispatches a value change event even if it has not been changed, which leads to
+unwanted page reloads.</li>
+</ul>
+<p><strong>Version 1.15.1</strong> – March 22, 2021</p>
+<ul>
+<li>Fixed: Site overlaps off-canvas cart on the iPhone;</li>
+<li>Fixed: Sometimes, due to unexpected behavior, the browser (in particular Safari) may not play the transition, which leads to blocking
+interaction with page elements due to the fact that the preloader is not deleted;</li>
+<li>Fixed: Product carousel blocks items that are below (z-index issue).</li>
+</ul>
+<p><strong>Version 1.15.0</strong> – November 19, 2020</p>
+<ul>
+<li>Changed: @m0t0r/ngx-slider replaced with @angular-slider/ngx-slider;</li>
+<li>Updated:<ul>
+<li><strong>Angular</strong> from <code>10.1.6</code> to <code>11.0.1</code>;</li>
+<li><strong>ngx-bootstrap</strong> form <code>6.1.0</code> to <code>6.2.0</code>;</li>
+<li><strong>ngx-red-zoom</strong> form <code>0.5.0</code> to <code>0.6.0</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Version 1.14.0</strong> – October 18, 2020</p>
+<ul>
+<li>Added: ngx-red-zoom gallery;</li>
+<li>Updated:<ul>
+<li><strong>Angular</strong> from <code>10.0.0</code> to <code>10.1.6</code>;</li>
+<li><strong>Bootstrap</strong> from <code>4.5.0</code> to <code>4.5.3</code>;</li>
+<li><strong>ngx-bootstrap</strong> form <code>5.6.1</code> to <code>6.1.0</code>;</li>
+<li><strong>ngx-owl-carousel-o</strong> form <code>3.0.1</code> to <code>4.0.0</code>;</li>
+<li><strong>ngx-toastr</strong> form <code>12.1.0</code> to <code>13.1.0</code>;</li>
+<li><strong>@fortawesome/fontawesome-free</strong> form <code>5.13.1</code> to <code>5.15.1</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Version 1.13.2</strong> – August 9, 2020</p>
+<ul>
+<li>Fixed: The height of the departments menu is calculated incorrectly after scrolling the page from bottom to top if the header is sticky.</li>
+</ul>
+<p><strong>Version 1.13.1</strong> – August 9, 2020</p>
+<ul>
+<li>Fixed: FOUC due to the Chrome bug related to resource load order.</li>
+</ul>
+<p><strong>Version 1.13.0</strong> – June 28, 2020</p>
+<ul>
+<li>Added: <strong>Off canvas</strong> shopping cart;</li>
+<li>Changed: ng5-slider replaced with @m0t0r/ngx-slider;</li>
+<li>Updated:<ul>
+<li><strong>Angular</strong> from <code>9.1.1</code> to <code>10.0.0</code>;</li>
+<li><strong>ngx-owl-carousel-o</strong> form <code>3.0.0</code> to <code>3.0.1</code>;</li>
+<li><strong>ngx-toastr</strong> form <code>12.0.1</code> to <code>12.1.0</code>;</li>
+<li><strong>@fortawesome/fontawesome-free</strong> form <code>5.13.0</code> to <code>5.13.1</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Version 1.12.0</strong> – June 1, 2020</p>
+<ul>
+<li>Added: Working share buttons.</li>
+</ul>
+<p><strong>Version 1.11.0</strong> – May 13, 2020</p>
+<ul>
+<li>Added: <strong>Search suggestions</strong>;</li>
+<li>Added: The ability to change the aspect ratio of the product images;</li>
+<li>Added: Zoom button to the product gallery;</li>
+<li>Added: <strong>To Top</strong> button;</li>
+<li>Changed: Notification styles;</li>
+<li>Changed: Social links moved to a separate component;</li>
+<li>Fixed: Color swatches are not wrapped to a new line;</li>
+<li>Updated:<ul>
+<li><strong>Bootstrap</strong> from <code>4.4.1</code> to <code>4.5.0</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Version 1.10.0</strong> – April 9, 2020</p>
+<ul>
+<li>Added: <strong>Sticky header</strong> that can work in two modes: pullToShow and alwaysOnTop;</li>
+<li>Changed: Improved touch events handling for navigation panel;</li>
+<li>Fixed: Pagination z-index;</li>
+<li>Updated:<ul>
+<li><strong>Angular</strong> from <code>9.0.0</code> to <code>9.1.1</code>;</li>
+<li><strong>ngx-owl-carousel-o</strong> form <code>2.0.3</code> to <code>3.0.0</code>;</li>
+<li><strong>ngx-bootstrap</strong> form <code>5.3.2</code> to <code>5.6.1</code>;</li>
+<li><strong>ngx-toastr</strong> form <code>11.3.3</code> to <code>12.0.1</code>;</li>
+<li><strong>@fortawesome/fontawesome-free</strong> form <code>5.12.1</code> to <code>5.13.0</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Version 1.9.0</strong> – March 5, 2020</p>
+<ul>
+<li>Added: Account menu;</li>
+<li>Added: Order success page;</li>
+<li>Added: Order details page;</li>
+<li>Added: Edit address page;</li>
+<li>Changed: Close drop cart when navigate;</li>
+<li>Fixed: Minor css issues.</li>
+</ul>
+<p><strong>Version 1.8.0</strong> – February 8, 2020</p>
+<ul>
+<li>Fixed: Same height of product cards in the block products carousel;</li>
+<li>Updated:<ul>
+<li><strong>Angular</strong> from <code>8.2.14</code> to <code>9.0.0</code>;</li>
+<li><strong>ngx-owl-carousel-o</strong> form <code>2.0.1</code> to <code>2.0.3</code>;</li>
+<li><strong>bootstrap</strong> form <code>4.3.1</code> to <code>4.4.1</code>;</li>
+<li><strong>ngx-bootstrap</strong> form <code>5.2.0</code> to <code>5.3.2</code>;</li>
+<li><strong>ngx-toastr</strong> form <code>11.2.1</code> to <code>11.3.3</code>;</li>
+<li><strong>@fortawesome/fontawesome-free</strong> form <code>5.11.2</code> to <code>5.12.1</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Version 1.7.0</strong> – December 19, 2019</p>
+<ul>
+<li>Added: SEO friendly URLs for category and product pages;</li>
+<li>Added: Workable sidebar filters;</li>
+<li>Changed: Now, the products data comes into the templates through Angular services that receive data from a fake API server.
+This should simplify the process of integrating the template with your backend API;</li>
+<li>Changed: The pages structure has been simplified. Now it is more like the page structure of a real online store;</li>
+<li>Other: Added section &quot;Integration&quot; in the documentation.</li>
+</ul>
+<p><strong>Version 1.6.0</strong> – November 14, 2019</p>
+<ul>
+<li>Changed: Now the menu will be closed when you click on an item;</li>
+<li>Fixed: Reverse image order in PhotoSwipe gallery for RTL direction;</li>
+<li>Fixed: Broken &quot;Shop By Category&quot; button in RTL direction;</li>
+<li>Updated: <strong>Angular</strong> from <code>8.1.0</code> to <code>8.2.13</code>;</li>
+<li>Updated: <strong>@fortawesome/fontawesome-free</strong> form <code>5.9.0</code> to <code>5.11.2</code>;</li>
+<li>Updated: <strong>ngx-bootstrap</strong> form <code>5.0.0</code> to <code>5.2.0</code>;</li>
+<li>Updated: <strong>ngx-owl-carousel-o</strong> form <code>1.1.5</code> to <code>2.0.1</code>;</li>
+<li>Updated: <strong>ngx-toastr</strong> form <code>10.0.4</code> to <code>11.2.1</code>;</li>
+<li>Other: Now instead of black images of stubs, more friendly gray images with an image resolution printed on them are used.</li>
+</ul>
+<p><strong>Version 1.5.1</strong> – August 2, 2019</p>
+<ul>
+<li>Fixed: &quot;Price&quot; and &quot;Quantity&quot; in the drop-down cart are displayed incorrectly in the RTL version.</li>
+</ul>
+<p><strong>Version 1.5.0</strong> – July 7, 2019</p>
+<ul>
+<li>Added: <strong>Off canvas</strong> filters on the shop page;</li>
+<li>Updated: <strong>Angular</strong> from <code>8.0</code> to <code>8.1</code>;</li>
+<li>Updated: <strong>Angular Universal</strong> from <code>7.1</code> to <code>8.1</code>;</li>
+<li>Updated: <strong>ng5-slider</strong> form <code>1.2.1</code> to <code>1.2.4</code>;</li>
+<li>Updated: <strong>ngx-bootstrap</strong> form <code>4.3.0</code> to <code>5.0.0</code>;</li>
+<li>Updated: <strong>ngx-owl-carousel-o</strong> form <code>1.1.5</code> to <code>1.1.6</code>.</li>
+<li>Fixed: minor CSS issues.</li>
+</ul>
+<p><strong>Version 1.4.0</strong> – June 14, 2019</p>
+<ul>
+<li>Updated: <strong>Angular</strong> form <code>7</code> to <code>8</code>;</li>
+<li>Updated: <strong>@fortawesome/fontawesome-free</strong> form <code>5.8.1</code> to <code>5.9.0</code>;</li>
+<li>Updated: <strong>ng5-slider</strong> form <code>1.1.13</code> to <code>1.2.1</code>;</li>
+<li>Updated: <strong>ngx-toastr</strong> form <code>10.0.2</code> to <code>10.0.4</code>;</li>
+<li>Updated: <strong>ngx-bootstrap</strong> form <code>4.0.1</code> to <code>4.3.0</code>;</li>
+<li>Updated: <strong>ngx-owl-carousel-o</strong> form <code>1.1.0</code> to <code>1.1.5</code>.</li>
+</ul>
+<p><strong>Version 1.3.0</strong> – May 22, 2019</p>
+<ul>
+<li>Added pipe <code>currencyFormat</code>, which now used instead of built-in pipe <code>currency</code>.
+This makes it easy to change the currency for the entire template;</li>
+<li>Added sections &quot;Currency&quot; and &quot;Update&quot; in the documentation.</li>
+</ul>
+<p><strong>Version 1.2.0</strong> – April 24, 2019</p>
+<ul>
+<li>Added support for RTL.</li>
+</ul>
+<p><strong>Version 1.1.0</strong> – April 04, 2019</p>
+<ul>
+<li>Added: Server Side Rendering (SSR) for SEO;</li>
+<li>Added: Five account pages (Dashboard, Edit Profile, Order History, Addresses, Change Password);</li>
+<li>Added: <strong>PhotoSwipe</strong> gallery on the product page;</li>
+<li>Updated: <strong>ngx-owl-carousel-o</strong> from <code>1.0.11</code> to <code>1.1.0</code>;</li>
+<li>Updated: <strong>ngx-bootstrap</strong> from <code>3.2.0</code> to <code>4.0.1</code>;</li>
+<li>Changed: <strong>Font Awesome</strong> is now used as a npm dependency;</li>
+<li>Fixed: Unexpected execution of mouse click handlers while dragging the owl-carousel (now mouse click will be prevented);</li>
+<li>Other minor changes.</li>
+</ul>
+<p><strong>Version 1.0.0</strong> – March 25, 2019</p>
+<ul>
+<li>Initial Release.</li>
+</ul>
+
+
+</div>
+
+            </section>
+        
+            <section class="docs-section" id="section-credits">
+                <h1 class="docs-section__title">Credits</h1>
+
+                <div class="docs-typography">
+    <ul>
+<li>Angular (<a href="https://angular.io/">https://angular.io/</a>)</li>
+<li>Bootstrap (<a href="http://getbootstrap.com">http://getbootstrap.com</a>)</li>
+<li>Font Awesome (<a href="https://fontawesome.com/">https://fontawesome.com/</a>)</li>
+<li>@angular-slider/ngx-slider (<a href="https://github.com/angular-slider/ngx-slider">https://github.com/angular-slider/ngx-slider</a>)</li>
+<li>ngx-owl-carousel-o (<a href="https://github.com/vitalii-andriiovskyi/ngx-owl-carousel-o">https://github.com/vitalii-andriiovskyi/ngx-owl-carousel-o</a>)</li>
+<li>ngx-bootstrap (<a href="https://valor-software.com/ngx-bootstrap/">https://valor-software.com/ngx-bootstrap/</a>)</li>
+<li>ngx-red-zoom (<a href="https://scompiler.github.io/red-zoom-angular/">https://scompiler.github.io/red-zoom-angular/</a>)</li>
+<li>ngx-toastr (<a href="https://scttcper.github.io/ngx-toastr/">https://scttcper.github.io/ngx-toastr/</a>)</li>
+<li>PhotoSwipe (<a href="https://photoswipe.com/">https://photoswipe.com/</a>)</li>
+<li>svg-sprite (<a href="https://github.com/jkphl/svg-sprite">https://github.com/jkphl/svg-sprite</a>)</li>
+</ul>
+
+
+</div>
+
+            </section>
+        
+    </div>
+</div>
+<script>
+    const links = [].slice.call(document.querySelectorAll('.docs-nav__links a'));
+
+    links.forEach(link => {
+        if (link.hash === window.location.hash) {
+            link.classList.add('docs-nav__link--current');
+
+            const section = document.querySelector(link.hash);
+
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    window.scrollTo({top: section.offsetTop});
+                }, 0);
+            });
+        } else {
+            link.classList.remove('docs-nav__link--current');
+        }
+    });
+
+    window.addEventListener('hashchange', () => {
+        links.forEach(link => {
+            if (link.hash === window.location.hash) {
+                link.classList.add('docs-nav__link--current');
+
+                const section = document.querySelector(link.hash);
+                window.scrollTo({top: section.offsetTop});
+            } else {
+                link.classList.remove('docs-nav__link--current');
+            }
+        });
+    });
+</script>
+</body>
+</html>

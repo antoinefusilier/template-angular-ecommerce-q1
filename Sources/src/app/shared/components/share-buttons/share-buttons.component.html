@@ -1,0 +1,12 @@
+<ul class="share-buttons__list">
+    <li
+        *ngFor="let item of items"
+        class="share-buttons__item share-buttons__item--type--{{ item.type }}"
+        [class.share-buttons__item--without-label]="!(item.label && showLabels)"
+    >
+        <a [attr.href]="item.url" target="_blank" appClick>
+            <i *ngIf="item.icon && showIcons" class="share-buttons__item-icon {{ item.icon }}"></i>
+            <span *ngIf="item.label && showLabels" class="share-buttons__item-label">{{ item.label }}</span>
+        </a>
+    </li>
+</ul>

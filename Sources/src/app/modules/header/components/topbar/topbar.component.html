@@ -1,0 +1,100 @@
+<!-- .topbar -->
+<div class="site-header__topbar topbar">
+    <div class="topbar__container container">
+        <div class="topbar__row">
+            <div class="topbar__item topbar__item--link">
+                <a class="topbar-link" routerLink="/site/about-us">About Us</a>
+            </div>
+            <div class="topbar__item topbar__item--link">
+                <a class="topbar-link" routerLink="/site/contact-us">Contacts</a>
+            </div>
+            <div class="topbar__item topbar__item--link">
+                <a class="topbar-link" routerLink="">Store Location</a>
+            </div>
+            <div class="topbar__item topbar__item--link">
+                <a class="topbar-link" routerLink="/shop/track-order">Track Order</a>
+            </div>
+            <div class="topbar__item topbar__item--link">
+                <a class="topbar-link" routerLink="/blog">Blog</a>
+            </div>
+            <div class="topbar__spring"></div>
+            <div class="topbar__item">
+                <div class="topbar-dropdown" appDropdown="topbar-dropdown--opened" #accountDropdown="appDropdown">
+                    <button class="topbar-dropdown__btn" type="button" (click)="accountDropdown.toggle()">
+                        My Account
+                        <app-icon name="arrow-rounded-down-7x5" size="7x5"></app-icon>
+                    </button>
+
+                    <div class="topbar-dropdown__body">
+                        <app-header-menu layout="topbar" (itemClick)="accountDropdown.close()" [items]="[
+                            {label: 'Dashboard',     url: '/account/dashboard'},
+                            {label: 'Edit Profile',  url: '/account/profile'},
+                            {label: 'Order History', url: '/account/orders'},
+                            {label: 'Addresses',     url: '/account/addresses'},
+                            {label: 'Password',      url: '/account/password'},
+                            {label: 'Logout',        url: '/account/login'}
+                        ]"></app-header-menu>
+                    </div>
+                </div>
+            </div>
+            <div class="topbar__item">
+                <div class="topbar-dropdown" appDropdown="topbar-dropdown--opened" #currencyDropdown="appDropdown">
+                    <button class="topbar-dropdown__btn" type="button" (click)="currencyDropdown.toggle()">
+                        Currency: <span class="topbar__item-value">{{ currencyService.options.code }}</span>
+                        <app-icon name="arrow-rounded-down-7x5" size="7x5"></app-icon>
+                    </button>
+
+                    <div class="topbar-dropdown__body">
+                        <div class="menu menu--layout--topbar">
+                            <ul class="menu__list">
+                                <li
+                                    class="menu__item"
+                                    *ngFor="let currency of currencies"
+                                    (mouseover)="menuItem.classList.add('menu__item--hover')"
+                                    (mouseleave)="menuItem.classList.remove('menu__item--hover')"
+                                    #menuItem
+                                >
+                                    <button class="menu__item-link" type="button" (click)="setCurrency(currency); currencyDropdown.close();">
+                                        {{ currency.name }}
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="topbar__item">
+                <div class="topbar-dropdown" appDropdown="topbar-dropdown--opened" #languageDropdown="appDropdown">
+                    <button class="topbar-dropdown__btn" type="button" (click)="languageDropdown.toggle()">
+                        Language: <span class="topbar__item-value">EN</span>
+                        <app-icon name="arrow-rounded-down-7x5" size="7x5"></app-icon>
+                    </button>
+
+                    <div class="topbar-dropdown__body">
+                        <div class="menu menu--layout--topbar menu--with-icons">
+                            <ul class="menu__list">
+                                <li
+                                    class="menu__item"
+                                    *ngFor="let language of languages"
+                                    (mouseover)="menuItem.classList.add('menu__item--hover')"
+                                    (mouseleave)="menuItem.classList.remove('menu__item--hover')"
+                                    #menuItem
+                                >
+                                    <button class="menu__item-link" type="button" (click)="languageDropdown.close();">
+                                        <span class="menu__item-icon">
+                                            <img [src]="'assets/images/languages/'+language.image+'.png'"
+                                                 [srcset]="'assets/images/languages/'+language.image+'.png 1x,' +
+                                                           'assets/images/languages/'+language.image+'@2x.png 2x'" alt="">
+                                        </span>
+                                        {{ language.name }}
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- .topbar / end -->

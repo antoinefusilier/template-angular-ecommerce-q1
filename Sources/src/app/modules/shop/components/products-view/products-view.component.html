@@ -1,0 +1,84 @@
+<div class="products-view" [ngClass]="{'products-view--loading': this.pageService.isLoading$|async}" [formGroup]="listOptionsForm">
+    <div class="products-view__loader"></div>
+
+    <div *ngIf="pageService.items?.length" class="products-view__content">
+        <div class="products-view__options">
+            <div class="view-options" [ngClass]="{
+                'view-options--offcanvas--always': offcanvas === 'always',
+                'view-options--offcanvas--mobile': offcanvas === 'mobile'
+            }">
+                <div class="view-options__filters-button">
+                    <button type="button" class="filters-button" (click)="sidebar.open()">
+                        <app-icon class="filters-button__icon" name="filters-16" size="16"></app-icon>
+                        <span class="filters-button__title">Filters</span>
+                        <span class="filters-button__counter" *ngIf="filtersCount > 0">{{ filtersCount }}</span>
+                    </button>
+                </div>
+                <div class="view-options__layout">
+                    <div class="layout-switcher">
+                        <div class="layout-switcher__list">
+                            <button title="Grid" type="button" class="layout-switcher__button"
+                                    [ngClass]="{'layout-switcher__button--active': layout === 'grid'}" (click)="setLayout('grid')">
+
+                                <app-icon name="layout-grid-16x16" size="16"></app-icon>
+                            </button>
+                            <button title="Grid With Features" type="button" class="layout-switcher__button"
+                                    [ngClass]="{'layout-switcher__button--active': layout === 'grid-with-features'}" (click)="setLayout('grid-with-features')">
+
+                                <app-icon name="layout-grid-with-details-16x16" size="16"></app-icon>
+                            </button>
+                            <button title="List" type="button" class="layout-switcher__button"
+                                    [ngClass]="{'layout-switcher__button--active': layout === 'list'}" (click)="setLayout('list')">
+
+                                <app-icon name="layout-list-16x16" size="16"></app-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-options__legend">
+                    Showing {{ this.pageService.from }}–{{ this.pageService.to }}
+                    of {{ this.pageService.total }}
+                    results
+                </div>
+                <div class="view-options__divider"></div>
+                <div class="view-options__control">
+                    <label for="view-options-sort">Sort By</label>
+                    <div>
+                        <select class="form-control form-control-sm" id="view-options-sort" formControlName="sort">
+                            <option value="default">Default</option>
+                            <option value="name_asc">Name (A-Z)</option>
+                            <option value="name_desc">Name (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="view-options__control">
+                    <label for="view-options-limit">Show</label>
+                    <div>
+                        <select class="form-control form-control-sm" id="view-options-limit" formControlName="limit">
+                            <option value="12">12</option>
+                            <option value="24">24</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="products-view__list products-list" [attr.data-layout]="layout !== 'list' ? grid : layout" [attr.data-with-features]="layout === 'grid-with-features' ? 'true' : 'false'">
+            <div class="products-list__body">
+                <div *ngFor="let product of pageService.items" class="products-list__item">
+                    <app-product-card [product]="product"></app-product-card>
+                </div>
+            </div>
+        </div>
+
+        <div class="products-view__pagination">
+            <app-pagination formControlName="page" [siblings]="2" [total]="pageService.pages"></app-pagination>
+        </div>
+    </div>
+
+    <div *ngIf="!pageService.items?.length" class="products-view__empty">
+        <div class="products-view__empty-title">No matching items</div>
+        <div class="products-view__empty-subtitle">Try resetting the filters</div>
+        <button type="button" class="btn btn-primary btn-sm" (click)="resetFilters()">Reset filters</button>
+    </div>
+</div>

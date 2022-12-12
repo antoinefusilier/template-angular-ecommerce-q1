@@ -1,0 +1,21 @@
+<div class="block block-sidebar" [ngClass]="{
+    'block-sidebar--offcanvas--always': offcanvas === 'always',
+    'block-sidebar--offcanvas--mobile': offcanvas === 'mobile',
+    'block-sidebar--open': isOpen
+}">
+    <div class="block-sidebar__backdrop" (click)="sidebar.close()"></div>
+    <div class="block-sidebar__body">
+        <div class="block-sidebar__header">
+            <div class="block-sidebar__title">Filters</div>
+            <button class="block-sidebar__close" type="button" (click)="sidebar.close()">
+                <app-icon name="cross-20" size="20"></app-icon>
+            </button>
+        </div>
+        <div class="block-sidebar__item">
+            <app-widget-filters [offcanvas]="offcanvas"></app-widget-filters>
+        </div>
+        <div class="block-sidebar__item d-none d-lg-block" *ngIf="offcanvas === 'mobile'">
+            <app-widget-products header="Latest Products" [products]="(bestsellers$|async) || []"></app-widget-products>
+        </div>
+    </div>
+</div>

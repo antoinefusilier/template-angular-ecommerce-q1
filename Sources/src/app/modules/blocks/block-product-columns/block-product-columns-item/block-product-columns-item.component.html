@@ -1,0 +1,7 @@
+<app-block-header [header]="header"></app-block-header>
+
+<div class="block-product-columns__column">
+    <div *ngFor="let product of products" class="block-product-columns__item">
+        <app-product-card [product]="product" layout="horizontal"></app-product-card>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+/*
+// .block-products-carousel
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/product-card';
+@import '../mixins/preloader';
+
+
+.block-products-carousel {
+    pointer-events: none;
+
+    app-block-header {
+        pointer-events: auto;
+    }
+
+    .owl-stage {
+        padding-bottom: 56px;
+        display: flex;
+    }
+    .owl-stage-outer {
+        margin-bottom: -56px;
+    }
+    .owl-item {
+        flex-shrink: 0;
+        display: flex;
+        pointer-events: auto;
+    }
+}
+.block-products-carousel__slider {
+    position: relative;
+    min-height: 200px;
+}
+.block-products-carousel__preloader {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: $block-products-carousel-preloader-bg;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility 0s .3s;
+
+    &:after {
+        @include preloader(100px);
+    }
+}
+.block-products-carousel--loading .block-products-carousel__preloader {
+    transition-delay: 0s, 0s;
+    opacity: 1;
+    visibility: visible;
+}
+.block-products-carousel__column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.block-products-carousel__cell {
+    & + & {
+        margin-top: 14px;
+    }
+
+    &,
+    app-product-card {
+        display: flex;
+        width: 100%;
+        flex-basis: 100%;
+        flex-grow: 1;
+    }
+
+    .product-card {
+        width: 100%;
+    }
+}
+.block-products-carousel--has-items {
+    .block-products-carousel__preloader {
+        bottom: 56px;
+    }
+}
+
+
+.block-products-carousel[data-layout^="grid-"] {
+    .product-card {
+        @include product-card-grid();
+    }
+}
+.block-products-carousel[data-layout="grid-4"] {
+    .product-card {
+        @include product-card-grid-nl();
+    }
+
+    @media (min-width: breakpoint(md-start)) and (max-width: breakpoint(lg-end)) {
+        .product-card {
+            @include product-card-grid-sm();
+        }
+    }
+
+    @media (max-width: breakpoint(xs-end)) {
+        .product-card {
+            @include product-card-grid-sm();
+        }
+    }
+}
+.block-products-carousel[data-layout="grid-4-sm"] {
+    .product-card {
+        @include product-card-grid-sm();
+    }
+}
+.block-products-carousel[data-layout="grid-5"] {
+    .product-card {
+        @include product-card-grid-sm();
+    }
+}
+
+
+.block-products-carousel[data-layout="horizontal"] {
+    .product-card {
+        @include product-card-horizontal();
+    }
+}

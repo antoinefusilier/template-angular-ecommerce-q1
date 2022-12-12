@@ -1,0 +1,46 @@
+<div class="site-footer">
+    <div class="container">
+        <div class="site-footer__widgets">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <app-footer-contacts></app-footer-contacts>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <app-footer-links header="Information" [links]="[
+                        {label: 'About Us',             url: '/site/about-us'},
+                        {label: 'Delivery Information', url: '/site/terms'},
+                        {label: 'Privacy Policy',       url: '/site/terms'},
+                        {label: 'Brands',               url: ''},
+                        {label: 'Contact Us',           url: '/site/contact-us'},
+                        {label: 'Returns',              url: ''},
+                        {label: 'Site Map',             url: ''}
+                    ]"></app-footer-links>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2">
+                    <app-footer-links header="My Account" [links]="[
+                        {label: 'Store Location', url: ''},
+                        {label: 'Order History',  url: ''},
+                        {label: 'Wish List',      url: '/shop/wishlist'},
+                        {label: 'Newsletter',     url: ''},
+                        {label: 'Specials',       url: ''},
+                        {label: 'Gift Cards',     url: ''},
+                        {label: 'Affiliate',      url: ''}
+                    ]"></app-footer-links>
+                </div>
+                <div class="col-12 col-md-12 col-lg-4">
+                    <app-footer-newsletter class="site-footer__widget"></app-footer-newsletter>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-footer__bottom">
+            <div class="site-footer__copyright">
+                Powered by <a href="https://angular.io/" target="_blank">Angular</a> — Design by <a [href]="theme.author.profile_url" target="_blank">{{ theme.author.name }}</a>
+            </div>
+            <div class="site-footer__payments">
+                <img src="assets/images/payments.png" alt="">
+            </div>
+        </div>
+    </div>
+    <app-totop></app-totop>
+</div>

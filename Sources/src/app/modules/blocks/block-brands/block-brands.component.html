@@ -1,0 +1,15 @@
+<!-- .block-brands -->
+<div class="block block-brands" *ngIf="brands?.length">
+    <div class="container" *ngIf="showCarousel">
+        <div class="block-brands__slider" #container>
+            <owl-carousel-o [options]="carouselOptions" appOwlPreventClick>
+                <ng-template *ngFor="let brand of brands" carouselSlide>
+                    <div class="block-brands__item">
+                        <a [routerLink]="root.brand(brand)"><img [src]="brand.image" [alt]="brand.name"></a>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
+<!-- .block-brands / end -->

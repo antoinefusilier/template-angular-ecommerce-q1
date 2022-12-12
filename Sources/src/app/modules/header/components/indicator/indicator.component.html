@@ -1,0 +1,23 @@
+<ng-template #buttonContent>
+    <span class="indicator__area">
+        <app-icon *ngIf="icon" [ngClass]="{'indicator__icon': iconWhenOpen}" [name]="icon" size="20"></app-icon>
+        <app-icon *ngIf="iconWhenOpen" class="indicator__icon indicator__icon--open" [name]="iconWhenOpen" size="20"></app-icon>
+        <span *ngIf="counter !== null" class="indicator__value">{{ counter }}</span>
+    </span>
+</ng-template>
+
+<button *ngIf="link === null" type="button" class="indicator__button" (click)="onClick($event)">
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+</button>
+
+<a *ngIf="link !== null && trigger === 'click'" [href]="link" class="indicator__button" (click)="onClick($event)" (appTouchClick)="onTouchClick($event)">
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+</a>
+
+<a *ngIf="link !== null && trigger !== 'click'" [routerLink]="link" class="indicator__button" (click)="onClick($event)" (appTouchClick)="onTouchClick($event)">
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+</a>
+
+<div class="indicator__dropdown" #dropdownElement>
+    <ng-content></ng-content>
+</div>

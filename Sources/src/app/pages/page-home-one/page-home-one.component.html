@@ -1,0 +1,38 @@
+<app-block-slideshow [withDepartments]="true"></app-block-slideshow>
+
+<app-block-features></app-block-features>
+
+<app-block-products-carousel
+    header="Featured Products"
+    layout="grid-4"
+    [loading]="featuredProducts.loading"
+    [products]="featuredProducts.products"
+    [groups]="featuredProducts.groups"
+    (groupChange)="groupChange(featuredProducts, $event)"
+></app-block-products-carousel>
+
+<app-block-banner></app-block-banner>
+
+<app-block-products header="Bestsellers" layout="large-first" [products]="(bestsellers$|async) || []"></app-block-products>
+
+<app-block-categories header="Popular Categories" layout="classic" [categories]="(popularCategories$|async) || []"></app-block-categories>
+
+<app-block-products-carousel
+    header="New Arrivals"
+    layout="horizontal"
+    [rows]="2"
+    [loading]="latestProducts.loading"
+    [products]="latestProducts.products"
+    [groups]="latestProducts.groups"
+    (groupChange)="groupChange(latestProducts, $event)"
+></app-block-products-carousel>
+
+<app-block-posts header="Latest News" layout="list-sm" [posts]="posts"></app-block-posts>
+
+<app-block-brands [brands]="(brands$|async) || []"></app-block-brands>
+
+<app-block-product-columns>
+    <app-block-product-columns-item header="Top Rated Products" [products]="(columnTopRated$|async) || []"></app-block-product-columns-item>
+    <app-block-product-columns-item header="Special Offers" [products]="(columnSpecialOffers$|async) || []"></app-block-product-columns-item>
+    <app-block-product-columns-item header="Bestsellers" [products]="(columnBestsellers$|async) || []"></app-block-product-columns-item>
+</app-block-product-columns>

@@ -1,0 +1,15 @@
+<div class="rating">
+    <div class="rating__body">
+        <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+            <svg class="rating__star" [ngClass]="{'rating__star--active': value >= i}" width="13px" height="12px">
+                <g class="rating__fill"><use xlink:href="assets/images/sprite.svg#star-normal"></use></g>
+                <g class="rating__stroke"><use xlink:href="assets/images/sprite.svg#star-normal-stroke"></use></g>
+            </svg>
+
+            <div class="rating__star rating__star--only-edge" [ngClass]="{'rating__star--active': value >= i}">
+                <div class="rating__fill"><div class="fake-svg-icon"></div></div>
+                <div class="rating__stroke"><div class="fake-svg-icon"></div></div>
+            </div>
+        </ng-container>
+    </div>
+</div>

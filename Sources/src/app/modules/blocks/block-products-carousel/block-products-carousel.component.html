@@ -1,0 +1,28 @@
+<!-- .block-products-carousel -->
+<div
+    class="block block-products-carousel"
+    [ngClass]="{
+        'block-products-carousel--loading': loading,
+        'block-products-carousel--has-items': !!columns?.length
+    }"
+    [attr.data-layout]="layout"
+>
+    <div [ngClass]="{'container': !withSidebar}" *ngIf="showCarousel">
+        <app-block-header [header]="header" [groups]="groups" [arrows]="true" (next)="carousel.next()" (prev)="carousel.prev()" (groupChange)="groupChange.emit($event)"></app-block-header>
+
+        <div class="block-products-carousel__slider" #container>
+            <div class="block-products-carousel__preloader"></div>
+
+            <owl-carousel-o [options]="carouselOptions" appOwlPreventClick #carousel>
+                <ng-template *ngFor="let column of columns" carouselSlide>
+                    <div class="block-products-carousel__column">
+                        <div *ngFor="let product of column" class="block-products-carousel__cell">
+                            <app-product-card [product]="product"></app-product-card>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
+<!-- .block-products-carousel / end -->

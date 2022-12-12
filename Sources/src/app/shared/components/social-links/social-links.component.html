@@ -1,0 +1,11 @@
+<ul class="social-links__list">
+    <li *ngFor="let item of items" class="social-links__item">
+        <a
+            class="social-links__link social-links__link--type--{{ item.type }}"
+            target="_blank"
+            [href]="item.url"
+        >
+            <i [ngClass]="item.icon"></i>
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,138 @@
+<div class="widget-filters widget" [ngClass]="{
+    'widget-filters--offcanvas--always': offcanvas === 'always',
+    'widget-filters--offcanvas--mobile': offcanvas === 'mobile'
+}" appCollapse>
+    <h4 class="widget-filters__title widget__title">Filters</h4>
+
+    <div class="widget-filters__list" [formGroup]="filtersForm" *ngIf="filtersForm">
+        <div *ngFor="let filter of filters; trackBy: trackBySlug" class="widget-filters__item">
+            <div class="filter filter--opened" appCollapseItem="filter--opened" #collapse="appCollapseItem">
+                <button type="button" class="filter__title" (click)="collapse.toggle()">
+                    {{ filter.name }}
+                    <app-icon class="filter__arrow" name="arrow-rounded-down-12x7" size="12x7"></app-icon>
+                </button>
+                <div class="filter__body" appCollapseContent>
+                    <div class="filter__container">
+                        <div *ngIf="filter.type === 'categories'" class="filter-categories" [ngClass]="{'filter-categories--root': filter.root}">
+                            <ul class="filter-categories__list">
+                                <li *ngIf="!filter.root" class="filter-categories__item filter-categories__item--parent">
+                                    <app-icon class="filter-categories__arrow"  name="arrow-rounded-left-6x9" size="6x9"></app-icon>
+                                    <a [routerLink]="this.root.shop()">All Products</a>
+                                </li>
+                                <li *ngFor="let item of filter.items; trackBy: trackBySlug" class="filter-categories__item filter-categories__item--{{ item.type }}">
+                                    <app-icon *ngIf="item.type === 'parent'" class="filter-categories__arrow"  name="arrow-rounded-left-6x9" size="6x9"></app-icon>
+                                    <a [routerLink]="this.root.category(item.category)">{{ item.name }}</a>
+                                    <div class="filter-categories__counter" *ngIf="item.type === 'child'">{{ item.count }}</div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div *ngIf="filter.type === 'range' && isPlatformBrowser" class="filter-price">
+                            <div class="filter-price__slider">
+                                <div class="ngx-slider-custom">
+                                    <ngx-slider
+                                        [formControl]="getRangeControl(filter)"
+                                        [options]="{
+                                            animate: false,
+                                            mouseEventsInterval: 10,
+                                            rightToLeft: rightToLeft,
+                                            floor: filter.min,
+                                            ceil: filter.max,
+                                            step: 1
+                                        }"
+                                        #slider
+                                    ></ngx-slider>
+                                </div>
+                            </div>
+                            <div class="filter-price__title">
+                                <span class="filter-price__min-value">{{ (rightToLeft ? slider.highValue : slider.value)|currencyFormat }}</span> –
+                                <span class="filter-price__max-value">{{ (rightToLeft ? slider.value : slider.highValue)|currencyFormat }}</span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="filter.type === 'check'" class="filter-list" [formGroupName]="filter.slug">
+                            <div class="filter-list__list">
+                                <label
+                                    *ngFor="let item of filter.items; trackBy: trackBySlug"
+                                    class="filter-list__item"
+                                    [ngClass]="{'filter-list__item--disabled': isItemDisabled(filter, item)}"
+                                >
+                                    <span class="filter-list__input input-check">
+                                        <span class="input-check__body">
+                                            <input
+                                                class="input-check__input"
+                                                type="checkbox"
+                                                [value]="item.slug"
+                                                [name]="'filter_' + filter.slug"
+                                                [formControlName]="item.slug"
+                                            >
+                                            <span class="input-check__box"></span>
+                                            <app-icon class="input-check__icon" name="check-9x7" size="9x7"></app-icon>
+                                        </span>
+                                    </span>
+
+                                    <span class="filter-list__title">{{ item.name }}</span>
+                                    <span class="filter-list__counter">{{ item.count }}</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div *ngIf="filter.type === 'radio'" class="filter-list">
+                            <div class="filter-list__list">
+                                <label
+                                    *ngFor="let item of filter.items; trackBy: trackBySlug"
+                                    class="filter-list__item"
+                                    [ngClass]="{'filter-list__item--disabled': isItemDisabled(filter, item)}"
+                                >
+                                    <span class="filter-list__input input-radio">
+                                        <span class="input-radio__body">
+                                            <input
+                                                class="input-radio__input"
+                                                type="radio"
+                                                [attr.disabled]="isItemDisabled(filter, item) ? true : null"
+                                                [value]="item.slug"
+                                                [formControlName]="filter.slug"
+                                            >
+                                            <span class="input-radio__circle"></span>
+                                        </span>
+                                    </span>
+
+                                    <span class="filter-list__title">{{ item.name }}</span>
+                                    <span class="filter-list__counter">{{ item.count }}</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div *ngIf="filter.type === 'color'" class="filter-color" [formGroupName]="filter.slug">
+                            <div class="filter-color__list">
+                                <label *ngFor="let item of filter.items; trackBy: trackBySlug" class="filter-color__item">
+                                    <span
+                                        class="filter-color__check input-check-color"
+                                        [ngClass]="['input-check-color--' + (item.color|colorType)]"
+                                        [style.color]="item.color"
+                                    >
+                                        <label class="input-check-color__body">
+                                            <input
+                                                class="input-check-color__input"
+                                                type="checkbox"
+                                                [value]="item.slug"
+                                                [name]="'filter_' + filter.slug"
+                                                [formControlName]="item.slug"
+                                            >
+                                            <span class="input-check-color__box"></span>
+                                            <app-icon class="input-check-color__icon" name="check-12x9" size="12x9"></app-icon>
+                                            <span class="input-check-color__stick"></span>
+                                        </label>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="widget-filters__actions d-flex">
+        <button class="btn btn-secondary btn-sm" (click)="reset()">Reset</button>
+    </div>
+</div>

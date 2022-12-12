@@ -1,0 +1,68 @@
+<div class="product-card" [ngClass]="{
+    'product-card--layout--grid product-card--size--sm': layout === 'grid-sm',
+    'product-card--layout--grid product-card--size--nl': layout === 'grid-nl',
+    'product-card--layout--grid product-card--size--lg': layout === 'grid-lg',
+    'product-card--layout--list':                        layout === 'list',
+    'product-card--layout--horizontal':                  layout === 'horizontal'
+}">
+    <button class="product-card__quickview" type="button" appClick (click)="showQuickview()" [ngClass]="{'product-card__quickview--preload': showingQuickview}">
+        <app-icon name="quickview-16" size="16"></app-icon>
+        <span class="fake-svg-icon"></span>
+    </button>
+
+    <div *ngIf="product.badges.length" class="product-card__badges-list">
+        <div *ngIf="product.badges.includes('sale')" class="product-card__badge product-card__badge--sale">Sale</div>
+        <div *ngIf="product.badges.includes('hot')" class="product-card__badge product-card__badge--hot">Hot</div>
+        <div *ngIf="product.badges.includes('new')" class="product-card__badge product-card__badge--new">New</div>
+    </div>
+
+    <div class="product-card__image product-image">
+        <a appClick [routerLink]="root.product(product)" *ngIf="product.images?.length" class="product-image__body">
+            <img class="product-image__img" [src]="product.images[0]" alt="">
+        </a>
+    </div>
+    <div class="product-card__info">
+        <div class="product-card__name">
+            <a appClick [routerLink]="root.product(product)">{{ product.name }}</a>
+        </div>
+        <div class="product-card__rating">
+            <app-rating [value]="product.rating"></app-rating>
+            <div class="product-card__rating-legend">{{ product.reviews }} Reviews</div>
+        </div>
+        <ul *ngIf="featuredAttributes.length" class="product-card__features-list">
+            <li *ngFor="let attribute of featuredAttributes">
+                {{ attribute.name }}:
+                <ng-container *ngFor="let value of attribute.values; let last = last">
+                    {{ value.name }}<ng-container *ngIf="!last">, </ng-container>
+                </ng-container>
+            </li>
+        </ul>
+    </div>
+    <div class="product-card__actions">
+        <div class="product-card__availability">
+            Availability:
+            <span *ngIf="product.availability === 'in-stock'" class="text-success">In Stock</span>
+        </div>
+        <div class="product-card__prices">
+            <ng-container *ngIf="product.compareAtPrice">
+                <span class="product-card__new-price">{{ product.price|currencyFormat }}</span>{{ ' ' }}
+                <span class="product-card__old-price">{{ product.compareAtPrice|currencyFormat }}</span>
+            </ng-container>
+            <ng-container *ngIf="!product.compareAtPrice">
+                {{ product.price|currencyFormat }}
+            </ng-container>
+        </div>
+        <div class="product-card__buttons">
+            <button class="btn btn-primary product-card__addtocart" type="button" appClick (click)="addToCart()" [ngClass]="{'btn-loading': addingToCart}">Add To Cart</button>
+            <button class="btn btn-secondary product-card__addtocart product-card__addtocart--list" type="button" appClick (click)="addToCart()" [ngClass]="{'btn-loading': addingToCart}">Add To Cart</button>
+            <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__wishlist" type="button" appClick (click)="addToWishlist()" [ngClass]="{'btn-loading': addingToWishlist}">
+                <app-icon name="wishlist-16" size="16"></app-icon>
+                <span class="fake-svg-icon fake-svg-icon--wishlist-16"></span>
+            </button>
+            <button class="btn btn-light btn-svg-icon btn-svg-icon--fake-svg product-card__compare" type="button" appClick (click)="addToCompare()" [ngClass]="{'btn-loading': addingToCompare}">
+                <app-icon name="compare-16" size="16"></app-icon>
+                <span class="fake-svg-icon fake-svg-icon--compare-16"></span>
+            </button>
+        </div>
+    </div>
+</div>

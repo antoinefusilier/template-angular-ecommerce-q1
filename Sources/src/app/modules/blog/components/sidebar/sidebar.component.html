@@ -1,0 +1,23 @@
+<div class="block block-sidebar block-sidebar--position--{{ position }}">
+    <div class="block-sidebar__item">
+        <app-widget-search></app-widget-search>
+    </div>
+    <div class="block-sidebar__item">
+        <app-widget-aboutus></app-widget-aboutus>
+    </div>
+    <div class="block-sidebar__item">
+        <app-widget-categories [categories]="categories"></app-widget-categories>
+    </div>
+    <div class="block-sidebar__item">
+        <app-widget-posts [posts]="posts|slice:0:3"></app-widget-posts>
+    </div>
+    <div class="block-sidebar__item">
+        <app-widget-newsletter></app-widget-newsletter>
+    </div>
+    <div class="block-sidebar__item">
+        <app-widget-comments [comments]="latestComments|slice:0:3"></app-widget-comments>
+    </div>
+    <div class="block-sidebar__item">
+        <app-widget-tags></app-widget-tags>
+    </div>
+</div>

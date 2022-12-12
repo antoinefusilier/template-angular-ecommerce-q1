@@ -1,0 +1,14 @@
+<div class="mobilemenu" [ngClass]="{'mobilemenu--open': isOpen}">
+    <div class="mobilemenu__backdrop" (click)="mobilemenu.close()"></div>
+    <div class="mobilemenu__body">
+        <div class="mobilemenu__header">
+            <div class="mobilemenu__title">Menu</div>
+            <button type="button" class="mobilemenu__close" (click)="mobilemenu.close()">
+                <app-icon name="cross-20" size="20"></app-icon>
+            </button>
+        </div>
+        <div class="mobilemenu__content">
+            <app-mobile-links [links]="links" (itemClick)="onItemClick($event)"></app-mobile-links>
+        </div>
+    </div>
+</div>

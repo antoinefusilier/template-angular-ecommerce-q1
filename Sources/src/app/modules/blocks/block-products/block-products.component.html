@@ -1,0 +1,30 @@
+<!-- .block-products -->
+<div class="block block-products block-products--layout--{{ layout }}">
+    <div class="container">
+        <app-block-header [header]="header"></app-block-header>
+
+        <div class="block-products__body">
+            <ng-template #largeTemplate>
+                <ng-container *ngIf="large !== null">
+                    <div class="block-products__featured">
+                        <div class="block-products__featured-item">
+                            <app-product-card [product]="large"></app-product-card>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-template>
+            <ng-template #smallsTemplate>
+                <div *ngIf="smalls.length > 0" class="block-products__list">
+                    <div *ngFor="let product of smalls" class="block-products__list-item">
+                        <app-product-card [product]="product"></app-product-card>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-container *ngIf="layout === 'large-last'" [ngTemplateOutlet]="smallsTemplate"></ng-container>
+            <ng-container [ngTemplateOutlet]="largeTemplate"></ng-container>
+            <ng-container *ngIf="layout === 'large-first'" [ngTemplateOutlet]="smallsTemplate"></ng-container>
+        </div>
+    </div>
+</div>
+<!-- .block-products / end -->

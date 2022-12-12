@@ -1,0 +1,15 @@
+<!-- .block-posts -->
+<div class="block block-posts block-posts--layout--{{ layout }}" [attr.data-layout]="layout">
+    <div class="container" *ngIf="showCarousel">
+        <app-block-header [header]="header" [arrows]="true" (prev)="carousel.prev()" (next)="carousel.next()"></app-block-header>
+
+        <div class="block-posts__slider" #container>
+            <owl-carousel-o [options]="carouselOptions" appOwlPreventClick #carousel>
+                <ng-template *ngFor="let post of posts" carouselSlide>
+                    <app-post-card [post]="post"></app-post-card>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>
+<!-- .block-posts / end -->

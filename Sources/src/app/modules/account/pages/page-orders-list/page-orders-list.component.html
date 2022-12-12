@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-header">
+        <h5>Order History</h5>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-table">
+        <div class="table-responsive-sm">
+            <table>
+                <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let order of orders">
+                    <td><a [routerLink]="'/account/orders/' + order.id">#{{ order.id }}</a></td>
+                    <td>{{ order.date }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.total|currencyFormat }} for {{ order.quantity }} item(s)</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-divider"></div>
+    <div class="card-footer">
+        <app-pagination [total]="3"></app-pagination>
+    </div>
+</div>

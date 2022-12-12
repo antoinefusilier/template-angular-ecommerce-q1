@@ -1,0 +1,28 @@
+<app-page-header [header]="pageHeader" [breadcrumbs]="breadcrumbs"></app-page-header>
+
+<ng-container *ngIf="columns === 3">
+    <div class="container">
+        <div class="shop-layout shop-layout--sidebar--{{ sidebarPosition }}">
+            <div class="shop-layout__sidebar" *ngIf="sidebarPosition === 'start'">
+                <app-shop-sidebar offcanvas="mobile"></app-shop-sidebar>
+            </div>
+            <div class="shop-layout__content">
+                <div class="block">
+                    <app-products-view [layout]="viewMode" grid="grid-3-sidebar" offcanvas="mobile"></app-products-view>
+                </div>
+            </div>
+            <div class="shop-layout__sidebar" *ngIf="sidebarPosition === 'end'">
+                <app-shop-sidebar offcanvas="mobile"></app-shop-sidebar>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="columns > 3">
+    <div class="container">
+        <div class="block">
+            <app-products-view [layout]="viewMode" [grid]="getProductsViewLayout()" offcanvas="always"></app-products-view>
+        </div>
+        <app-shop-sidebar offcanvas="always"></app-shop-sidebar>
+    </div>
+</ng-container>

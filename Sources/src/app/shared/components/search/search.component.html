@@ -1,0 +1,76 @@
+<div class="search__body">
+    <form [formGroup]="form" class="search__form">
+        <select
+            *ngIf="location === 'header'"
+            class="search__categories"
+            aria-label="Category"
+            formControlName="category"
+            (focus)="closeSuggestion()"
+        >
+            <option value="all">All Categories</option>
+            <option
+                *ngFor="let category of categories"
+                [value]="category.slug"
+                [innerHTML]="getCategoryName(category)"
+            ></option>
+        </select>
+        <input
+            class="search__input"
+            name="search"
+            placeholder="Search over 10,000 products"
+            aria-label="Site search"
+            type="text"
+            autocomplete="off"
+            formControlName="query"
+            (keydown.escape)="escape.next()"
+            (focus)="openSuggestion()"
+            #input
+        >
+        <button class="search__button search__button--type--submit" type="submit">
+            <app-icon name="search-20" size="20"></app-icon>
+        </button>
+        <button
+            *ngIf="location === 'mobile-header'"
+            class="search__button search__button--type--close"
+            type="button"
+            (click)="closeButtonClick.next()"
+        >
+            <app-icon name="cross-20" size="20"></app-icon>
+        </button>
+        <div class="search__border"></div>
+    </form>
+
+    <div class="search__suggestions suggestions suggestions--location--{{ location }}">
+        <ul class="suggestions__list">
+            <li *ngFor="let product of suggestedProducts" class="suggestions__item">
+                <div class="suggestions__item-image product-image">
+                    <div class="product-image__body">
+                        <img class="product-image__img" [src]="product.images[0]" alt="">
+                    </div>
+                </div>
+
+                <div class="suggestions__item-info">
+                    <a [routerLink]="root.product(product)" class="suggestions__item-name" (click)="closeSuggestion()">
+                        {{ product.name }}
+                    </a>
+                    <div class="suggestions__item-meta">SKU: {{ product.sku }}</div>
+                </div>
+                <div class="suggestions__item-price">
+                    {{ product.price|currencyFormat }}
+                </div>
+
+                <div *ngIf="location === 'header'" class="suggestions__item-actions">
+                    <button
+                        type="button"
+                        title="Add to cart"
+                        class="btn btn-primary btn-sm btn-svg-icon"
+                        [class.btn-loading]="addedToCartProducts.includes(product)"
+                        (click)="addToCart(product)"
+                    >
+                        <app-icon name="cart-16" size="16"></app-icon>
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

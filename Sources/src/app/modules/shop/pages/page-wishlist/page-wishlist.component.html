@@ -1,0 +1,66 @@
+<app-page-header [header]="'Wish List'" [breadcrumbs]="[
+    {label: 'Home',      url: '/'},
+    {label: 'Wish List', url: ''}
+]"></app-page-header>
+
+<div class="block block-empty" *ngIf="!(wishlist.items$|async)?.length">
+    <div class="container">
+        <div class="block-empty__body">
+            <div class="block-empty__message">Your wish list is empty!</div>
+            <div class="block-empty__actions">
+                <a routerLink="/" class="btn btn-primary btn-sm">Continue</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="block" *ngIf="(wishlist.items$|async)?.length">
+    <div class="container">
+        <table class="wishlist">
+            <thead class="wishlist__head">
+            <tr class="wishlist__row">
+                <th class="wishlist__column wishlist__column--image">Image</th>
+                <th class="wishlist__column wishlist__column--product">Product</th>
+                <th class="wishlist__column wishlist__column--stock">Stock Status</th>
+                <th class="wishlist__column wishlist__column--price">Price</th>
+                <th class="wishlist__column wishlist__column--tocart"></th>
+                <th class="wishlist__column wishlist__column--remove"></th>
+            </tr>
+            </thead>
+            <tbody class="wishlist__body">
+            <tr *ngFor="let product of wishlist.items$|async" class="wishlist__row">
+                <td class="wishlist__column wishlist__column--image">
+                    <div class="product-image">
+                        <a
+                            *ngIf="product.images?.length"
+                            [routerLink]="root.product(product)"
+                            class="product-image__body"
+                        >
+                            <img class="product-image__img" [src]="product.images[0]" alt="">
+                        </a>
+                    </div>
+                </td>
+                <td class="wishlist__column wishlist__column--product">
+                    <a [routerLink]="root.product(product)" class="wishlist__product-name">{{ product.name }}</a>
+                    <div class="wishlist__product-rating">
+                        <app-rating [value]="product.rating"></app-rating>
+                        <div class="wishlist__product-rating-legend">{{ product.reviews }} Reviews</div>
+                    </div>
+                </td>
+                <td class="wishlist__column wishlist__column--stock">
+                    <div class="badge badge-success">In Stock</div>
+                </td>
+                <td class="wishlist__column wishlist__column--price">{{ product.price|currencyFormat }}</td>
+                <td class="wishlist__column wishlist__column--tocart">
+                    <button type="button" class="btn btn-primary btn-sm" (click)="addToCart(product)" [ngClass]="{'btn-loading': addedToCartProducts.includes(product)}">Add To Cart</button>
+                </td>
+                <td class="wishlist__column wishlist__column--remove">
+                    <button type="button" class="btn btn-light btn-sm btn-svg-icon" (click)="remove(product)" [ngClass]="{'btn-loading': removedProducts.includes(product)}">
+                        <app-icon name="cross-12" size="12"></app-icon>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

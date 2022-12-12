@@ -1,0 +1,18 @@
+<ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="current <= 1">
+        <a class="page-link page-link--with-arrow" aria-label="Previous" (click)="setPage(current - 1)">
+            <app-icon class="page-link__arrow page-link__arrow--left" aria-hidden="true" name="arrow-rounded-left-8x13" size="8x13"></app-icon>
+        </a>
+    </li>
+    <li *ngFor="let page of pages; trackBy: trackByFn" class="page-item" [class.active]="page === current">
+        <a class="page-link" (click)="setPage(page)">
+            {{ page }}
+            <span *ngIf="page === current" class="sr-only">(current)</span>
+        </a>
+    </li>
+    <li class="page-item" [class.disabled]="current >= total">
+        <a class="page-link page-link--with-arrow" aria-label="Next" (click)="setPage(current + 1)">
+            <app-icon class="page-link__arrow page-link__arrow--right" aria-hidden="true" name="arrow-rounded-right-8x13" size="8x13"></app-icon>
+        </a>
+    </li>
+</ul>

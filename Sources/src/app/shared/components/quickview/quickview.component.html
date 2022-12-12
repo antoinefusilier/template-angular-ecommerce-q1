@@ -1,0 +1,9 @@
+<ng-template #modal>
+    <div class="quickview">
+        <button class="quickview__close" type="button" appClick (click)="modalRef && modalRef.hide()">
+            <app-icon name="cross-20" size="20"></app-icon>
+        </button>
+
+        <app-product *ngIf="product" [product]="product" layout="quickview"></app-product>
+    </div>
+</ng-template>

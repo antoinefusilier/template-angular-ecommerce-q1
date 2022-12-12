@@ -1,0 +1,123 @@
+/*
+// .product-red-zoom
+*/
+@import '../variables';
+@import '../functions';
+@import '../mixins/direction';
+@import 'node_modules/ngx-red-zoom/styles/mixins/common';
+@import 'node_modules/ngx-red-zoom/styles/mixins/style-window';
+
+
+$local-gallery-image-padding: 22px;
+$local-lens-expand-width: 20px;
+
+
+.product-red-zoom {
+    @include red-zoom-style-window(
+        $overlay-color: transparent,
+            // frame
+        $frame-bg-color:        rgba(#3399ff, .3),
+        $frame-shadow:          none,
+        $frame-border-width:    0,
+        $frame-image-visible:   false,
+            // lens
+        $lens-bg-color:         #fff,
+        $lens-shadow:           #{0 1px 5px rgba(#000, .12), 0 1px 15px rgba(#000, .05)},
+        $lens-border-width:     6px,
+        $lens-border-color:     #fff,
+        $lens-border-position:  inside,
+    );
+
+    .red-zoom__frame {
+        z-index: 3;
+    }
+    .red-zoom__lens {
+        --window-y: calc(var(--red-zoom-thumb-y, 0px) - #{$local-gallery-image-padding});
+
+        @include direction {
+            --window-x: calc(
+                var(--red-zoom-thumb-x, 0px) -
+                (var(--width, 0px) - var(--red-zoom-thumb-w, 0px)) * .5 +
+                (
+                #{$local-gallery-image-padding * 1} +
+                var(--red-zoom-thumb-w, 0px) +
+                var(--gallery-gutter, 0px) +
+                (var(--width, 0px) - var(--red-zoom-thumb-w, 0px)) * .5 -
+                #{$local-lens-expand-width * .5}
+                ) * #{$transform-direction}
+            );
+        }
+
+        z-index: 4;
+        left: var(--window-x, 0px);
+        top: var(--window-y, 0px);
+        width: var(--width, 0px);
+        height: calc(var(--red-zoom-thumb-h, 0px) + #{$local-gallery-image-padding} * 2);
+    }
+    .red-zoom__lens-image {
+        left: 0;
+    }
+
+    // The enlarged image cannot be smaller than the thumbnail.
+    @include red-zoom-min-scale-factor(1, 'thumb');
+    // The enlarged image cannot be larger than its twice natural size.
+    @include red-zoom-max-scale-factor(2, 'lens-image');
+}
+
+.product-red-zoom--layout--quickview {
+    display: none;
+}
+.product-red-zoom--layout--standard {
+    .red-zoom__lens {
+        --gallery-gutter: 40px;
+        --width: #{535px + $local-lens-expand-width};
+    }
+
+    @media (max-width: breakpoint(lg-end)) {
+        .red-zoom__lens {
+            --width: #{445px + $local-lens-expand-width};
+        }
+    }
+}
+.product-red-zoom--layout--columnar {
+    .red-zoom__lens {
+        --gallery-gutter: 30px;
+        --width: #{415px + $local-lens-expand-width};
+    }
+    @media (max-width: breakpoint(lg-end)) {
+        .red-zoom__lens {
+            --width: #{355px + $local-lens-expand-width};
+        }
+    }
+}
+.product-red-zoom--layout--sidebar {
+    .red-zoom__lens {
+        --gallery-gutter: 32px;
+        --width: #{396px + $local-lens-expand-width};
+    }
+    @media (max-width: breakpoint(lg-end)) {
+        .red-zoom__lens {
+            --width: #{306px + $local-lens-expand-width};
+        }
+    }
+}
+
+.product-red-zoom {
+    @media (max-width: breakpoint(md-end)) {
+        .red-zoom__lens {
+            --gallery-gutter: 30px;
+            --width: #{372px + $local-lens-expand-width};
+        }
+    }
+    @media (max-width: breakpoint(sm-end)) {
+        .red-zoom__frame {
+            display: none;
+        }
+        .red-zoom__lens {
+            left: calc(var(--red-zoom-thumb-x, 0px) - #{$local-gallery-image-padding});
+            top: calc(var(--red-zoom-thumb-y, 0px) - #{$local-gallery-image-padding});
+            width: calc(var(--red-zoom-thumb-w, 0px) + #{$local-gallery-image-padding} * 2);
+            height: calc(var(--red-zoom-thumb-h, 0px) + #{$local-gallery-image-padding} * 2);
+        }
+    }
+}
